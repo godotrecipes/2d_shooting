@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bl6edsbksm3qf"]
+
+[ext_resource type="Texture2D" uid="uid://qkx48dqhnws2" path="res://assets/spritesheet_characters.png" id="1_8fu1o"]
+[ext_resource type="Script" path="res://player.gd" id="1_bq6gm"]
+[ext_resource type="PackedScene" uid="uid://b5g07x5i7ip5u" path="res://bullet.tscn" id="2_s3o2d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ccwfb"]
+radius = 17.0294
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_bq6gm")
+bullet_scene = ExtResource("2_s3o2d")
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+texture = ExtResource("1_8fu1o")
+region_enabled = true
+region_rect = Rect2(112, 0, 55, 44)
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+position = Vector2(-9, 0)
+shape = SubResource("CircleShape2D_ccwfb")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(27, 9)
+
+[node name="Camera2d" type="Camera2D" parent="."]
+current = true
+zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = 0
+limit_right = 1344
+limit_bottom = 960
